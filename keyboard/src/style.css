@@ -64,25 +64,25 @@ body{
     text-transform: none;
 }
 .line .up{
-    background-image: url(./images/arrow-up.svg);
+    background-image: url(../images/arrow-up.svg);
     background-size:20px 20px;
     background-position:50% 50%;
     background-repeat: no-repeat;
 }
 .line .left {
-    background-image: url(./images/arrow-left.svg);
+    background-image: url(../images/arrow-left.svg);
     background-size:20px 20px;
     background-position:50% 50%;
     background-repeat: no-repeat;
 }
 .line .down {
-    background-image: url(./images/arrow-down.svg);
+    background-image: url(../images/arrow-down.svg);
     background-size:20px 20px;
     background-position:50% 50%;
     background-repeat: no-repeat;
 }
 .line .right {
-    background-image: url(./images/arrow-right.svg);
+    background-image: url(../images/arrow-right.svg);
     background-size:20px 20px;
     background-position:50% 50%;
     background-repeat: no-repeat;
