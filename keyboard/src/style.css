@@ -1,15 +1,18 @@
-*{
-    margin:0 auto;
-    font-family:"Trebuchet MS", "Helvetica", sans-serif;
+* {
+    margin: 0 auto;
+    font-family: "Trebuchet MS", "Helvetica", sans-serif;
 }
-body{
+
+body {
     margin: 0 auto;
 }
-.title{
+
+.title {
     width: 600px;
-    margin:20px auto;
+    margin: 20px auto;
 }
-.textarea{
+
+.textarea {
     display: block;
     width: 700px;
     height: 200px;
@@ -18,88 +21,116 @@ body{
     font-size: 18px;
     color: #444444;
 }
-.wrapper{
-    width:710px;
-    margin:0 auto;
-    padding:5px;
-    padding-left:0;
-    padding-bottom:0;
-    background:#888888;
-    border:3px solid #222222;
-    border-radius:5px
+
+.wrapper {
+    width: 710px;
+    margin: 0 auto;
+    padding: 5px;
+    padding-left: 0;
+    padding-bottom: 0;
+    background: #888888;
+    border: 3px solid #222222;
+    border-radius: 5px
 }
-.line{
-    clear:both;
-    width:100%;
-    height:40px;
-    margin-bottom:6px
+
+.line {
+    clear: both;
+    width: 100%;
+    height: 40px;
+    margin-bottom: 6px
 }
-.line div{
-    float:left;
-    width:40px;
-    height:40px;
-    margin-left:6px;
-    line-height:40px;
-    text-align:center;
-    color:#ffffff;
-    background:#444444;
-    border-radius:3px;
-    cursor:pointer;
-    text-transform: uppercase;
+
+.line div {
+    float: left;
+    width: 40px;
+    height: 40px;
+    margin-left: 6px;
+    line-height: 40px;
+    text-align: center;
+    color: #ffffff;
+    background: #444444;
+    border-radius: 3px;
+    cursor: pointer;
+    text-transform: lowercase;
 }
-.line .bspace, .line .capslock, .line .shift{
+
+.line .bspace,
+.line .capslock,
+.line .shift {
     width: 102px;
     text-transform: none;
 }
+
 .line .tab {
     width: 50px;
     text-transform: none;
 }
+
 .line .del {
     width: 46px;
     text-transform: none;
 }
-.line .enter, .line .shift:last-child {
+
+.line .enter,
+.line .shift:last-child {
     width: 86px;
     text-transform: none;
 }
-.line .up{
+
+.line .up {
     background-image: url(../images/arrow-up.svg);
-    background-size:20px 20px;
-    background-position:50% 50%;
+    background-size: 20px 20px;
+    background-position: 50% 50%;
     background-repeat: no-repeat;
 }
+
 .line .left {
     background-image: url(../images/arrow-left.svg);
-    background-size:20px 20px;
-    background-position:50% 50%;
+    background-size: 20px 20px;
+    background-position: 50% 50%;
     background-repeat: no-repeat;
 }
+
 .line .down {
     background-image: url(../images/arrow-down.svg);
-    background-size:20px 20px;
-    background-position:50% 50%;
+    background-size: 20px 20px;
+    background-position: 50% 50%;
     background-repeat: no-repeat;
 }
+
 .line .right {
     background-image: url(../images/arrow-right.svg);
-    background-size:20px 20px;
-    background-position:50% 50%;
+    background-size: 20px 20px;
+    background-position: 50% 50%;
     background-repeat: no-repeat;
     color: white;
 }
+
 .line .space {
-    width:332px;
+    width: 332px;
 }
-.line .Ctrl, .line .Win, .line .Alt {
+
+.line .Ctrl,
+.line .Win,
+.line .Alt {
     text-transform: none;
 }
 
 
 .line div:hover {
-    background:#58c5f0;
+    background: #58c5f0;
 }
+
 .line div:active {
-    background-color:#2d48fa;
+    background-color: #2d48fa;
     color: black;
-   }
+}
+
+div .active {
+    background-color: #2d48fa;
+    color: black;
+}
+
+div .press {
+    border: 1px solid #2d48fa;
+}
