@@ -1,111 +1,254 @@
 'use strict';
-const div__title = document.createElement("div");
-div__title.classList.add('title');
-div__title.insertAdjacentHTML("beforeend", '<h1>RSS Виртуальная клавиатура</h1>');
-document.body.append(div__title);
+function render() {
+  let body = document.body;
+  return body.innerHTML = `
+  <div class="title">
+  <h1>RSS Виртуальная клавиатура</h1>
+  </div>
+  <textarea class="textarea"></textarea>
+  <div class="wrapper">
+  <div class="line">
+  <div class="key" data-str="Backquote">\`</div>
+  <div class="key" data-str="Digit1">1</div>
+  <div class="key" data-str="Digit2">2</div>
+  <div class="key" data-str="Digit3">3</div>
+  <div class="key" data-str="Digit4">4</div>
+  <div class="key" data-str="Digit5">5</div>
+  <div class="key" data-str="Digit6">6</div>
+  <div class="key" data-str="Digit7">7</div>
+  <div class="key" data-str="Digit8">8</div>
+  <div class="key" data-str="Digit9">9</div>
+  <div class="key" data-str="Digit0">0</div>
+  <div class="key" data-str="Minus">-</div>
+  <div class="key" data-str="Equal">=</div>
+  <div class="fnkey bspace" data-str="Backspace">Backspace</div>
+  </div>
 
-const textarea = document.createElement("textarea");
-textarea.classList.add('textarea');
-textarea.insertAdjacentHTML("beforeend", '');
-document.body.append(textarea);
+  <div class="line">
+  <div class="fnkey tab" data-str="Tab">Tab</div>
+  <div class="key" data-str="KeyQ">q</div>
+  <div class="key" data-str="KeyW">w</div>
+  <div class="key" data-str="KeyE">e</div>
+  <div class="key" data-str="KeyR">r</div>
+  <div class="key" data-str="KeyT">t</div>
+  <div class="key" data-str="KeyY">y</div>
+  <div class="key" data-str="KeyU">u</div>
+  <div class="key" data-str="KeyI">i</div>
+  <div class="key" data-str="KeyO">o</div>
+  <div class="key" data-str="KeyP">p</div>
+  <div class="key" data-str="BracketLeft">[</div>
+  <div class="key" data-str="BracketRight">]</div>
+  <div class="key" data-str="Backslash">\\</div>
+  <div class="fnkey del"  data-str="Delete">Del</div>
+  </div>
 
-const div = document.createElement("div");
-div.classList.add('wrapper');
-document.body.append(div);
+  <div class="line">
+  <div class="fnkey capslock" data-str="CapsLock">CapsLock</div>
+  <div class="key" data-str="KeyA">a</div>
+  <div class="key" data-str="KeyS">s</div>
+  <div class="key" data-str="KeyD">d</div>
+  <div class="key" data-str="KeyF">f</div>
+  <div class="key" data-str="KeyG">g</div>
+  <div class="key" data-str="KeyH">h</div>
+  <div class="key" data-str="KeyJ">j</div>
+  <div class="key" data-str="KeyK">k</div>
+  <div class="key" data-str="KeyL">l</div>
+  <div class="key" data-str="Semicolon">;</div>
+  <div class="key" data-str="Quote">\'</div>
+  <div class="fnkey enter" data-str="Enter">Enter</div>
+  </div>
 
-const div__list1 = document.createElement("div");
-div__list1.classList.add('line');
-div__list1.insertAdjacentHTML("beforeend", '<div class="key" data="~">~</div>');
-div__list1.insertAdjacentHTML("beforeend", '<div class="key" data="1">1</div>');
-div__list1.insertAdjacentHTML("beforeend", '<div class="key" data="2">2</div>');
-div__list1.insertAdjacentHTML("beforeend", '<div class="key" data="3">3</div>');
-div__list1.insertAdjacentHTML("beforeend", '<div class="key" data="4">4</div>');
-div__list1.insertAdjacentHTML("beforeend", '<div class="key" data="5">5</div>');
-div__list1.insertAdjacentHTML("beforeend", '<div class="key" data="6">6</div>');
-div__list1.insertAdjacentHTML("beforeend", '<div class="key" data="7">7</div>');
-div__list1.insertAdjacentHTML("beforeend", '<div class="key" data="8">8</div>');
-div__list1.insertAdjacentHTML("beforeend", '<div class="key" data="9">9</div>');
-div__list1.insertAdjacentHTML("beforeend", '<div class="key" data="0">0</div>');
-div__list1.insertAdjacentHTML("beforeend", '<div class="key" data="-">-</div>');
-div__list1.insertAdjacentHTML("beforeend", '<div class="key" data="=">=</div>');
-div__list1.insertAdjacentHTML("beforeend", '<div class="fnkey bspace">Backspace</div>');
-div.appendChild(div__list1);
+  <div class="line">
+  <div class="fnkey shift" data-str="ShiftLeft">Shift</div>
+  <div class="key" data-str="KeyZ">z</div>
+  <div class="key" data-str="KeyX">x</div>
+  <div class="key" data-str="KeyC">c</div>
+  <div class="key" data-str="KeyV">v</div>
+  <div class="key" data-str="KeyB">b</div>
+  <div class="key" data-str="KeyN">n</div>
+  <div class="key" data-str="KeyM">m</div>
+  <div class="key" data-str="Comma">,</div>
+  <div class="key" data-str="Period">.</div>
+  <div class="key" data-str="Slash">/</div>
+  <div class="fnkey up" data-str="ArrowUp"></div>
+  <div class="fnkey shift" data-str="ShiftRight">Shift</div>
+  </div>
 
-const div__list2 = document.createElement("div");
-div__list2.classList.add('line');
-div__list2.insertAdjacentHTML("beforeend", '<div class="fnkey tab">Tab</div>');
-div__list2.insertAdjacentHTML("beforeend", '<div class="key" data="q">q</div>');
-div__list2.insertAdjacentHTML("beforeend", '<div class="key" data="w">w</div>');
-div__list2.insertAdjacentHTML("beforeend", '<div class="key" data="e">e</div>');
-div__list2.insertAdjacentHTML("beforeend", '<div class="key" data="r">r</div>');
-div__list2.insertAdjacentHTML("beforeend", '<div class="key" data="t">t</div>');
-div__list2.insertAdjacentHTML("beforeend", '<div class="key" data="y">y</div>');
-div__list2.insertAdjacentHTML("beforeend", '<div class="key" data="u">u</div>');
-div__list2.insertAdjacentHTML("beforeend", '<div class="key" data="i">i</div>');
-div__list2.insertAdjacentHTML("beforeend", '<div class="key" data="o">o</div>');
-div__list2.insertAdjacentHTML("beforeend", '<div class="key" data="p">p</div>');
-div__list2.insertAdjacentHTML("beforeend", '<div class="key" data="[">[</div>');
-div__list2.insertAdjacentHTML("beforeend", '<div class="key" data="]">]</div>');
-div__list2.insertAdjacentHTML("beforeend", '<div class="key" data="\\">\\</div>');
-div__list2.insertAdjacentHTML("beforeend", '<div class="fnkey del">Del</div>');
-div.appendChild(div__list2);
+  <div class="line">
+  <div class="fnkey Ctrl" data-str="ControlLeft">Ctrl</div>
+  <div class="fnkey Win" data-str="MetaLeft">Win</div>
+  <div class="fnkey Alt" data-str="AltLeft">Alt</div>
+  <div class="fnkey space" data-str="Space"></div>
+  <div class="fnkey Alt" data-str="AltRight">Alt</div>
+  <div class="fnkey left" data-str="ArrowLeft"></div>
+  <div class="fnkey left" data-str="ArrowDown"></div>
+  <div class="fnkey right" data-str="ArrowRight"></div>
+  <div class="fnkey Ctrl" data-str="ControlRight">Ctrl</div>
+  </div>
+  </div>
+`}
+render()
 
-const div__list3 = document.createElement("div");
-div__list3.classList.add('line');
-div__list3.insertAdjacentHTML("beforeend", '<div class="fnkey capslock">Caps Lock</div>');
-div__list3.insertAdjacentHTML("beforeend", '<div class="key" data="a">a</div>');
-div__list3.insertAdjacentHTML("beforeend", '<div class="key" data="s">s</div>');
-div__list3.insertAdjacentHTML("beforeend", '<div class="key" data="d">d</div>');
-div__list3.insertAdjacentHTML("beforeend", '<div class="key" data="f">f</div>');
-div__list3.insertAdjacentHTML("beforeend", '<div class="key" data="g">g</div>');
-div__list3.insertAdjacentHTML("beforeend", '<div class="key" data="h">h</div>');
-div__list3.insertAdjacentHTML("beforeend", '<div class="key" data="j">j</div>');
-div__list3.insertAdjacentHTML("beforeend", '<div class="key" data="k">k</div>');
-div__list3.insertAdjacentHTML("beforeend", '<div class="key" data="l">l</div>');
-div__list3.insertAdjacentHTML("beforeend", '<div class="key" data=";">;</div>');
-div__list3.insertAdjacentHTML("beforeend", '<div class="key" data="\'">\'</div>');
-div__list3.insertAdjacentHTML("beforeend", '<div class="enter" data="<br>">Enter</div>');
-div.appendChild(div__list3);
+//
+const body = document.body;
+let key = document.querySelectorAll('.key'),
+  span = document.getElementsByTagName('span'),
+  fnkey = document.querySelectorAll('.fnkey'),
+  display = document.querySelector('.textarea');
 
-const div__list4 = document.createElement("div");
-div__list4.classList.add('line');
-div__list4.insertAdjacentHTML("beforeend", '<div class="fnkey shift">Shift</div>');
-div__list4.insertAdjacentHTML("beforeend", '<div class="key" data="z">z</div>');
-div__list4.insertAdjacentHTML("beforeend", '<div class="key" data="x">x</div>');
-div__list4.insertAdjacentHTML("beforeend", '<div class="key" data="c">c</div>');
-div__list4.insertAdjacentHTML("beforeend", '<div class="key" data="v">v</div>');
-div__list4.insertAdjacentHTML("beforeend", '<div class="key" data="b">b</div>');
-div__list4.insertAdjacentHTML("beforeend", '<div class="key" data="n">n</div>');
-div__list4.insertAdjacentHTML("beforeend", '<div class="key" data="m">m</div>');
-div__list4.insertAdjacentHTML("beforeend", '<div class="key" data=",">,</div>');
-div__list4.insertAdjacentHTML("beforeend", '<div class="key" data=".">.</div>');
-div__list4.insertAdjacentHTML("beforeend", '<div class="key" data="/">/</div>');
-div__list4.insertAdjacentHTML("beforeend", '<div class="fnkey up"></div>');
-div__list4.insertAdjacentHTML("beforeend", '<div class="fnkey shift">Shift</div>');
-div.appendChild(div__list4);
-
-const div__list5 = document.createElement("div");
-div__list5.classList.add('line');
-div__list5.insertAdjacentHTML("beforeend", '<div class="fnkey Ctrl">Ctrl</div>');
-div__list5.insertAdjacentHTML("beforeend", '<div class="fnkey Win">Win</div>');
-div__list5.insertAdjacentHTML("beforeend", '<div class="fnkey Alt">Alt</div>');
-div__list5.insertAdjacentHTML("beforeend", '<div class="fnkey space"></div>');
-div__list5.insertAdjacentHTML("beforeend", '<div class="fnkey Alt">Alt</div>');
-div__list5.insertAdjacentHTML("beforeend", '<div class="fnkey left"></div>');
-div__list5.insertAdjacentHTML("beforeend", '<div class="fnkey down"></div>');
-div__list5.insertAdjacentHTML("beforeend", '<div class="fnkey right"></div>');
-div__list5.insertAdjacentHTML("beforeend", '<div class="fnkey Ctrl">Ctrl</div>');
-div.appendChild(div__list5);
-
-
-
-
-let key = document.querySelectorAll('.key');
-let display = document.querySelector('.textarea');
-
-for(let k of key){
-k.onclick = function(){
-    display.textContent += k.textContent;
+//печать экранной клавиатуры
+function printScreenKeyboard() {
+  for (let k of key) {
+    k.onclick = function () {
+      display.textContent += k.textContent;
+    }
   }
-}  
+}
+printScreenKeyboard()
 
+
+function clear() {
+  let text = display.innerHTML;
+  display.textContent = text.substring(0, text.length - 1)
+}
+function printScreenFuncKeyboard(func, ...codes) {
+  let pressed = new Set(),
+      wrapper = document.querySelector('.wrapper');
+
+  wrapper.addEventListener('click', function(event) {
+    // console.log(event.target.innerHTML)
+     
+      pressed.add(event.target.innerHTML);
+      // console.log(pressed)
+      for (let code of codes) {
+        if (!pressed.has(code)) {
+          return;
+        }
+      }
+      
+      pressed.clear();
+      clear();
+      func();
+    });
+
+}
+printScreenFuncKeyboard(() => display.textContent += '~',"Shift","`", );
+printScreenFuncKeyboard(() => display.textContent += '!',"Shift","1", );
+printScreenFuncKeyboard(() => display.textContent += '@',"Shift","2");
+printScreenFuncKeyboard(() => display.textContent += '#',"Shift","3");
+printScreenFuncKeyboard(() => display.textContent += '$',"Shift","4");
+printScreenFuncKeyboard(() => display.textContent += '%',"Shift","5");
+printScreenFuncKeyboard(() => display.textContent += '^',"Shift","6");
+printScreenFuncKeyboard(() => display.textContent += '&',"Shift","7");
+printScreenFuncKeyboard(() => display.textContent += '*',"Shift","8");
+printScreenFuncKeyboard(() => display.textContent += '(',"Shift","9");
+printScreenFuncKeyboard(() => display.textContent += ')',"Shift","0");
+printScreenFuncKeyboard(() => display.textContent += '_',"Shift","=");
+printScreenFuncKeyboard(() => display.textContent += '|',"Shift","\\");
+
+
+
+function listener() {
+  body.addEventListener('keydown', function (event) {
+
+    let ru = ['ё', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'й', 'ц', 'у', 'к',
+      'е', 'н', 'г', 'ш', 'щ', 'з', 'х', 'ъ', '\\', 'ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л',
+      'д', 'ж', 'э', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю', '.'],
+      eng = ['\`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'q', 'w', 'e', 'r', 't',
+        'y', 'u', 'i', 'o', 'p', '[', ']', '\\', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';',
+        '\'', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/'],
+      extraSymbol = ['!','@','#','$','%','^','&','*','(',')','_','+'],
+      objFnKey = {
+        Backspace() {
+          let text = display.innerHTML;
+          display.textContent = text.substring(0, text.length - 1)
+        },
+        Enter() { return display.textContent += '\n' },
+        Delete() {
+          let text = display.innerHTML;
+          display.textContent = text.substring(0, text.length - 1)
+        },
+        CapsLock() {
+          for (let i = 0; i < key.length; i++) {
+            key[i].style.textTransform = "uppercase"
+          }
+          // display.textContent = text.toUpperCase()
+        },
+        ShiftLeft() { },
+        ShiftRight() { },
+        ArrowUp() { },
+        ControlLeft() { },
+        MetaLeft() { },
+        AltLeft() { },
+        Space() { return display.textContent += ' ' },
+        AltRight() { },
+        ArrowLeft() { },
+        ArrowDown() { },
+        ArrowRight() { },
+        ControlRight() { },
+        Tab() { return display.textContent += '    ' },
+
+      },
+      strKey = event.key,
+      strCode = event.code;
+
+    //анимация нажатия клавиш
+    function toggleActive() {
+      for (let i = 0; i < key.length; i++) {
+        if (key[i].dataset.str === strCode) {
+          key[i].classList.add('active');
+          setTimeout(() => key[i].classList.remove('active'), 100)
+          // console.log(key[i].dataset.str)
+        }
+      }
+      for (let j = 0; j < fnkey.length; j++) {
+        if (fnkey[j].dataset.str === strCode) {
+          fnkey[j].classList.add('active');
+          setTimeout(() => fnkey[j].classList.remove('active'), 100)
+          // console.log(fnkey[j].dataset.str)
+        }
+      }
+    }
+
+    if (eng.includes(strKey) || ru.includes(strKey)) {
+      for (let i = 0; i < key.length; i++) {
+        key[i].style.textTransform = "lowercase"
+      }
+    }
+    else {
+      for (let i = 0; i < key.length; i++) {
+        key[i].style.textTransform = "uppercase"
+      }
+    }
+    if (strKey.search(/[А-яЁё]/) === -1) {
+      for (let i = 0; i < key.length; i++) {
+        key[i].innerHTML = eng[i]
+      }
+    }
+    else {
+      for (let i = 0; i < key.length; i++) {
+        key[i].innerHTML = ru[i]
+      }
+    }
+
+
+    //печать физической клавиатуры
+    function printPhysicalKeyboard() {
+      if (ru.includes(strKey.toLowerCase()) || eng.includes(strKey.toLowerCase())) {
+        display.textContent += strKey;
+        toggleActive()
+      }
+
+      for (let k in objFnKey) {
+        if (k == strCode) {
+          // console.log(objFnKey[k])
+          objFnKey[k]()
+          toggleActive()
+        }
+      }
+    }
+    printPhysicalKeyboard()
+  })
+
+}
+listener()
