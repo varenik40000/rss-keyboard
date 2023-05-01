@@ -1,5 +1,4 @@
 'use strict';
-'use strict';
 function render() {
   let body = document.body;
   return body.innerHTML = `
@@ -90,15 +89,126 @@ function render() {
 `}
 render()
 
-function print() {
-let key = document.querySelectorAll('.key');
-let display = document.querySelector('.textarea');
+//
+const body = document.body;
+let key = document.querySelectorAll('.key'),
+  span = document.getElementsByTagName('span'),
+  fnkey = document.querySelectorAll('.fnkey'),
+  display = document.querySelector('.textarea');
 
-for (let k of key) {
-  k.onclick = function () {
-    display.textContent += k.textContent;
+
+//печать экранной клавиатуры
+function printScreenKeyboard() {
+  for (let k of key) {
+    k.onclick = function () {
+      display.textContent += k.textContent;
+    }
   }
 }
-}
-print()
+printScreenKeyboard()
 
+
+function listener() {
+  body.addEventListener('keydown', function (event) {
+
+    let ru = ['ё', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'й', 'ц', 'у', 'к',
+      'е', 'н', 'г', 'ш', 'щ', 'з', 'х', 'ъ', '\\', 'ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л',
+      'д', 'ж', 'э', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю', '.'],
+      eng = ['\`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'q', 'w', 'e', 'r', 't',
+        'y', 'u', 'i', 'o', 'p', '[', ']', '\\', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';',
+        '\'', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/'],
+      objFnKey = {
+        Backspace() {
+          let text = display.innerHTML;
+          display.textContent = text.substring(0, text.length - 1)
+        },
+        Enter() { return display.textContent += '\n' },
+        Delete() {
+          let text = display.innerHTML;
+          display.textContent = text.substring(0, text.length - 1)
+        },
+        CapsLock() {
+          for (let i = 0; i < key.length; i++) {
+            key[i].style.textTransform = "uppercase"
+          }
+          // display.textContent = text.toUpperCase()
+        },
+        ShiftLeft() { },
+        ShiftRight() { },
+        ArrowUp() { },
+        ControlLeft() { },
+        MetaLeft() { },
+        AltLeft() { },
+        Space() { return display.textContent += ' ' },
+        AltRight() { },
+        ArrowLeft() { },
+        ArrowDown() { },
+        ArrowRight() { },
+        ControlRight() { },
+        Tab() { return display.textContent += '    ' },
+
+      },
+      strKey = event.key,
+      strCode = event.code;
+
+    //анимация нажатия клавиш
+    function toggleActive() {
+      for (let i = 0; i < key.length; i++) {
+        if (key[i].dataset.str === strCode) {
+          key[i].classList.add('active');
+          setTimeout(() => key[i].classList.remove('active'), 100)
+          // console.log(key[i].dataset.str)
+        }
+      }
+      for (let j = 0; j < fnkey.length; j++) {
+        if (fnkey[j].dataset.str === strCode) {
+          fnkey[j].classList.add('active');
+          setTimeout(() => fnkey[j].classList.remove('active'), 100)
+          // console.log(fnkey[j].dataset.str)
+        }
+      }
+    }
+
+    if (eng.includes(strKey) || ru.includes(strKey)) {
+      for (let i = 0; i < key.length; i++) {
+        key[i].style.textTransform = "lowercase"
+      }
+    }
+    else {
+      for (let i = 0; i < key.length; i++) {
+        key[i].style.textTransform = "uppercase"
+      }
+    }
+    if (strKey.search(/[А-яЁё]/) === -1) {
+      for (let i = 0; i < key.length; i++) {
+        key[i].innerHTML = eng[i]
+      }
+    }
+    else {
+      for (let i = 0; i < key.length; i++) {
+        key[i].innerHTML = ru[i]
+      }
+    }
+
+
+    //печать физической клавиатуры
+    function printPhysicalKeyboard() {
+      if (ru.includes(strKey.toLowerCase()) || eng.includes(strKey.toLowerCase())) {
+        display.textContent += strKey;
+        toggleActive()
+      }
+
+      for (let k in objFnKey) {
+        if (k == strCode) {
+          // console.log(objFnKey[k])
+          objFnKey[k]()
+          toggleActive()
+        }
+      }
+    }
+    printPhysicalKeyboard()
+  })
+
+
+}
+listener()
