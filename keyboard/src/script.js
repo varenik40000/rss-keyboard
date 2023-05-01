@@ -96,7 +96,6 @@ let key = document.querySelectorAll('.key'),
   fnkey = document.querySelectorAll('.fnkey'),
   display = document.querySelector('.textarea');
 
-
 //печать экранной клавиатуры
 function printScreenKeyboard() {
   for (let k of key) {
@@ -108,6 +107,47 @@ function printScreenKeyboard() {
 printScreenKeyboard()
 
 
+function clear() {
+  let text = display.innerHTML;
+  display.textContent = text.substring(0, text.length - 1)
+}
+function printScreenFuncKeyboard(func, ...codes) {
+  let pressed = new Set(),
+      wrapper = document.querySelector('.wrapper');
+
+  wrapper.addEventListener('click', function(event) {
+    // console.log(event.target.innerHTML)
+     
+      pressed.add(event.target.innerHTML);
+      // console.log(pressed)
+      for (let code of codes) {
+        if (!pressed.has(code)) {
+          return;
+        }
+      }
+      
+      pressed.clear();
+      clear();
+      func();
+    });
+
+}
+printScreenFuncKeyboard(() => display.textContent += '~',"Shift","`", );
+printScreenFuncKeyboard(() => display.textContent += '!',"Shift","1", );
+printScreenFuncKeyboard(() => display.textContent += '@',"Shift","2");
+printScreenFuncKeyboard(() => display.textContent += '#',"Shift","3");
+printScreenFuncKeyboard(() => display.textContent += '$',"Shift","4");
+printScreenFuncKeyboard(() => display.textContent += '%',"Shift","5");
+printScreenFuncKeyboard(() => display.textContent += '^',"Shift","6");
+printScreenFuncKeyboard(() => display.textContent += '&',"Shift","7");
+printScreenFuncKeyboard(() => display.textContent += '*',"Shift","8");
+printScreenFuncKeyboard(() => display.textContent += '(',"Shift","9");
+printScreenFuncKeyboard(() => display.textContent += ')',"Shift","0");
+printScreenFuncKeyboard(() => display.textContent += '_',"Shift","=");
+printScreenFuncKeyboard(() => display.textContent += '|',"Shift","\\");
+
+
+
 function listener() {
   body.addEventListener('keydown', function (event) {
 
@@ -117,6 +157,7 @@ function listener() {
       eng = ['\`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'q', 'w', 'e', 'r', 't',
         'y', 'u', 'i', 'o', 'p', '[', ']', '\\', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';',
         '\'', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/'],
+      extraSymbol = ['!','@','#','$','%','^','&','*','(',')','_','+'],
       objFnKey = {
         Backspace() {
           let text = display.innerHTML;
@@ -208,7 +249,6 @@ function listener() {
     }
     printPhysicalKeyboard()
   })
-
 
 }
 listener()
